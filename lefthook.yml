@@ -1,0 +1,15 @@
+pre-commit:
+  piped: true
+  commands:
+    govet:
+      tags: backend style
+      files: git ls-files -m
+      glob: "*.go"
+      run: go vet {files}
+    
+    go-tidy:
+      glob: "*.go"
+      run: go mod tidy
+    
+    update:
+      run: git update-index --again
