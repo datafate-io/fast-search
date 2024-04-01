@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package textencoder;
+option go_package = "./textencoderpb";
+
+// The text encoder service definition.
+service TextEncoderService {
+  // Sends a text to encode and receives the encoded vector.
+  rpc EncodeText (TextRequest) returns (VectorResponse) {}
+}
+
+// The request message containing the text to encode.
+message TextRequest {
+  string text = 1;
+}
+
+// The response message containing the encoded vector.
+message VectorResponse {
+  repeated float vector = 1;
+}
