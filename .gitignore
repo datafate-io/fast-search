@@ -21,3 +21,6 @@ env.*.toml
 !env.example.toml
 bin/
 .env
+env.local.toml
+env.prodduction.toml
+env.staging.toml

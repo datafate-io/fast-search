@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  encoder:
+    container_name: encoder
+    build:
+      context: ./encoder
+      dockerfile: Dockerfile
+    ports:
+      - "50051:50051"
+    profiles:
+      - "encoder"
+      - "dev"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities:
+                - gpu
+              count: 1

@@ -12,6 +12,7 @@ logger.info("Cuda available: {}".format(torch.cuda.is_available()))
 
 _model = SentenceTransformer("sentence-transformers/LaBSE")
 
+logger.info("Model loaded successfully")
 
 class TextEncoderService(text_encoder_pb2_grpc.TextEncoderServiceServicer):
 

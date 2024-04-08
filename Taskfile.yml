@@ -1,0 +1,29 @@
+version: '3'
+
+tasks:
+  default:
+    aliases:
+      - format
+    cmds:
+      - fd ".*\.go$" | xargs -I % go fmt %
+      - go mod tidy
+    silent: true
+
+  test:
+    cmds:
+      - go test -v ./...
+  
+  update-env-example:
+    cmds: 
+      - "[ -f .env ] && envy generate .env"
+      - pwd
+      - "[ -f env.local.toml ] && envy generate env.local.toml"
+    ignore_error: true
+  
+  infra-up:
+    cmds:
+      - docker compose --profile dev up -d
+  
+  infra-down:
+    cmds:
+      - docker compose --profile dev down

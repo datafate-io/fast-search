@@ -3,13 +3,16 @@ pre-commit:
   commands:
     govet:
       tags: backend style
-      files: git ls-files -m
       glob: "*.go"
-      run: go vet {files}
+      run: go vet ./...
     
     go-tidy:
       glob: "*.go"
       run: go mod tidy
+
+    go-fmt:
+      glob: "*.go"
+      run: go fmt ./...
     
     update:
       run: git update-index --again
