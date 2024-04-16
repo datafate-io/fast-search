@@ -27,3 +27,11 @@ tasks:
   infra-down:
     cmds:
       - docker compose --profile dev down
+  
+  generate-mocks:
+    cmds:
+      - mockery --all --output internal/mocks
+  
+  clear-cache:
+    cmds:
+      - go clean -testcache

@@ -15,6 +15,10 @@ type TextEncoderClient struct {
 	config *configs.Configs
 }
 
+type IFTextEncoderClient interface {
+	EncodeText(text string) ([]float32, error)
+}
+
 func NewTextEncoderClient(config *configs.Configs) *TextEncoderClient {
 	return &TextEncoderClient{
 		config: config,
